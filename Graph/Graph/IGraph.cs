@@ -6,10 +6,13 @@
         public T Add(T name);
         public bool IsNodeExist(T name);
         public T Remove(T name);
-        public bool AddEdge(T dest, T src);
+        public bool AddEdge(T dest, int weight, T src);
         public bool IsEdgeExist(T dest, T src);
         public bool RemoveEdge(T dest, T src);
         public string ToString();
         public bool Clear();
+        public bool SetDest(T dest);
+        public bool SetSrc(T src);
+        public void DrawGraph(Graphics g, int width, int height);
     }
 }

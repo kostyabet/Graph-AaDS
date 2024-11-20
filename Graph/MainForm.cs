@@ -1,20 +1,25 @@
 using System.Windows.Forms;
-
 namespace Graph
 {
     public partial class MainForm : Form
     {
+        Graph<int> graph;
         public MainForm()
         {
+            graph = new Graph<int>();
             InitializeComponent();
         }
 
         private void inputGraphButton_Click(object sender, EventArgs e)
         {
-            // may set graph
-            InputGraphForm inputGraphForm = new InputGraphForm();
+            InputGraphForm inputGraphForm = new InputGraphForm(graph);
             inputGraphForm.ShowDialog();
-            //panel.Invalidate();
+            graphPanel.Invalidate();
+        }
+
+        private void graphPanel_Paint(object sender, PaintEventArgs e)
+        {
+            graph.DrawGraph(e.Graphics, graphPanel.Width, graphPanel.Height);
         }
     }
 }

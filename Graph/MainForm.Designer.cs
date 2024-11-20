@@ -41,7 +41,7 @@
             inputGraphButton.TabIndex = 0;
             inputGraphButton.Text = "Ввод графа";
             inputGraphButton.UseVisualStyleBackColor = true;
-            inputGraphButton.Click += this.inputGraphButton_Click;
+            inputGraphButton.Click += inputGraphButton_Click;
             // 
             // graphPanel
             // 
@@ -50,6 +50,7 @@
             graphPanel.Name = "graphPanel";
             graphPanel.Size = new Size(784, 561);
             graphPanel.TabIndex = 1;
+            graphPanel.Paint += graphPanel_Paint;
             // 
             // MainForm
             // 
