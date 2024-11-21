@@ -154,7 +154,7 @@ namespace Graph
             source.edges.Remove(edge);
             return true;
         }
-        private Edge<T>? GetEdge(Node<T> src, Node<T> dest)
+        private Edge<T>? GetEdge(Node<T> src, Node<T>? dest)
         {
             foreach (var edge in src.edges) 
             {
@@ -292,6 +292,65 @@ namespace Graph
                 g.DrawEllipse(NODE_BORDER_COLOR, x, y, NODE_RADIUS * 2, NODE_RADIUS * 2);
                 g.DrawString(nodes[i]?.name?.ToString(), new Font("Arial", 15), NODE_TEXT_COLOR, x + 11, y + 9);
             }
+        }
+
+        // main alghoritms
+        public int DijkstraAlgo(T source, T destanation)
+        {
+            HashSet<T> viseted = new HashSet<T>();
+            T w = source; // start symbol
+            int[,] D = new int[values.Count, values.Count]; // lengths
+            for (int k = 0; k < values.Count; k++)
+            {
+                for (int j = 0; j < values.Count; j++)
+                {
+                    D[k, j] = int.MaxValue;
+                }
+            }
+
+            int i = 0;
+            while (viseted.Count < values.Count)
+            {
+                Node<T> CurrentObject = getItem(w);
+                int currentIndex = Convert.ToInt32(CurrentObject?.name?.ToString()) - 1;
+                int prevValue = i != 0
+                    ? D[i - 1, currentIndex] == int.MaxValue
+                        ? 0
+                        : D[i - 1, currentIndex]
+                    : 0;
+                for (int j = 0; j < values.Count; j++)
+                {
+                    if (viseted.Contains(values[j].name))
+                    {
+                        D[i, j] = D[i - 1, j];
+                        continue;
+                    }
+                    Edge<T> currentEdge = GetEdge(CurrentObject, values[j]);
+                    if (currentEdge != null)
+                        D[i, j] = i != 0 
+                            ? Math.Min(
+                                prevValue + currentEdge.weight, 
+                                D[i - 1, j]) 
+                            : currentEdge.weight;
+                    else
+                        D[i, j] = i != 0
+                            ? D[i - 1, j]
+                            : int.MaxValue;
+                }
+                viseted.Add(w);
+                int minVal = D[i,0], minIndex = 0;
+                for (int j = 0; j < values.Count; j++)
+                {
+                    if (D[i, j] < minVal && !viseted.Contains(values[j].name))
+                    {
+                        minVal = D[i, j];
+                        minIndex = j;
+                    }
+                }
+                w = values[minIndex].name;
+                i++;
+            }
+            return 0;
         }
     }
 }

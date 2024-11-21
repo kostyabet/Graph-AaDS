@@ -66,6 +66,7 @@
             searchShortWayButton.TabIndex = 2;
             searchShortWayButton.Text = "Поиск кратчайшего пути";
             searchShortWayButton.UseVisualStyleBackColor = true;
+            searchShortWayButton.Click += searchShortWayButton_Click;
             // 
             // searchLongestWayButton
             // 

@@ -21,5 +21,10 @@ namespace Graph
         {
             graph.DrawGraph(e.Graphics, graphPanel.Width, graphPanel.Height);
         }
+
+        private void searchShortWayButton_Click(object sender, EventArgs e)
+        {
+            graph.DijkstraAlgo(graph.MainSrc, graph.MainDest);
+        }
     }
 }
