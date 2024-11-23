@@ -1,4 +1,7 @@
-﻿namespace Graph
+﻿using System.Drawing.Drawing2D;
+using System.Windows.Forms;
+
+namespace Graph
 {
     public class Graph<T> : IGraph<T>
     {
@@ -288,7 +291,7 @@
         }
 
         // main alghoritms
-        public (int[,], int[]) DijkstraAlgoShort(T source, T destanation)
+        public (int[,], int[]) DijkstraAlgoShort(T source)
         {
             List<int> W = new List<int>();
             HashSet<T> viseted = new HashSet<T>();
@@ -347,7 +350,7 @@
             }
             return (D, W.ToArray());
         }
-        public (int[,], int[]) DijkstraAlgoLong(T source, T destanation)
+        public (int[,], int[]) DijkstraAlgoLong(T source)
         {
             List<int> W = new List<int>();
             HashSet<T> viseted = new HashSet<T>();
@@ -405,6 +408,21 @@
                 i++;
             }
             return (D, W.ToArray());
+        }
+        public int[,] shortestPathsMatrix()
+        {
+            int[,] Ds = new int[values.Count, values.Count];
+            for (int i = 0; i < values.Count; i++)
+            {
+                int[,] D;
+                int[] W;
+                (D, W) = DijkstraAlgoShort(values[i].name);
+                for (int j = 0; j < values.Count; j++)
+                {
+                    Ds[i, j] = D[D.GetLength(0)-1, j] == int.MaxValue ? 0 : D[D.GetLength(0) - 1, j];
+                }
+            }
+            return Ds;
         }
     }
 }

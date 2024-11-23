@@ -26,7 +26,7 @@ namespace Graph
         {
             int[,] D;
             int[] W;
-            (D, W) = graph.DijkstraAlgoShort(graph.MainSrc, graph.MainDest);
+            (D, W) = graph.DijkstraAlgoShort(graph.MainSrc);
             DijkstraForm dijkstraForm = new DijkstraForm(D, W, graph);
             dijkstraForm.ShowDialog();
         }
@@ -35,9 +35,17 @@ namespace Graph
         {
             int[,] D;
             int[] W;
-            (D, W) = graph.DijkstraAlgoLong(graph.MainSrc, graph.MainDest);
+            (D, W) = graph.DijkstraAlgoLong(graph.MainSrc);
             DijkstraForm dijkstraForm = new DijkstraForm(D, W, graph);
             dijkstraForm.ShowDialog();
+        }
+
+        private void searchAllWaysButton_Click(object sender, EventArgs e)
+        {
+            int[,] Ds;
+            Ds = graph.shortestPathsMatrix();
+            AllWaysForm allWaysForm = new AllWaysForm(Ds);
+            allWaysForm.ShowDialog();
         }
     }
 }

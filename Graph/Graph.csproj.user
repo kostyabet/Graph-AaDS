@@ -4,6 +4,9 @@
     <Compile Update="DijkstraForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AllWaysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="InputGraphForm.cs">
       <SubType>Form</SubType>
     </Compile>

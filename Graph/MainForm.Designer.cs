@@ -88,6 +88,7 @@
             searchAllWaysButton.TabIndex = 4;
             searchAllWaysButton.Text = "Поиск всех путей и сортировка их по возростанию";
             searchAllWaysButton.UseVisualStyleBackColor = true;
+            searchAllWaysButton.Click += searchAllWaysButton_Click;
             // 
             // searchCenterButton
             // 

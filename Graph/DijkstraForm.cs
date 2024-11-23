@@ -1,7 +1,4 @@
-﻿using System.CodeDom;
-using System.Windows.Forms;
-
-namespace Graph
+﻿namespace Graph
 {
     public partial class DijkstraForm : Form
     {
@@ -19,6 +16,7 @@ namespace Graph
 
         void createGrid(int[,] D, int[] W)
         {
+            // grid settings
             const int rowWidth = 101;
             const int colWidth = 30;
             resGridView.ColumnCount = D.GetLength(1) + 1;
@@ -29,12 +27,11 @@ namespace Graph
             this.Height = resGridView.Height + 20;
             this.MaximumSize = new Size(this.Width, this.Height);
             this.MinimumSize = new Size(this.Width, this.Height);
-
+            // grid input
             resGridView.Columns[0].DefaultCellStyle.BackColor = Color.LightGray;
             resGridView.Rows[0].Cells[0].Value = "Итерация";
-            for (int i = 1; i < D.GetLength(0) + 1; i++) {
+            for (int i = 1; i < D.GetLength(0) + 1; i++)
                 resGridView.Rows[0].Cells[i].Value = $"{i}";
-            }
             for (int i = 1; i < D.GetLength(0) + 1; i++)
             {
                 resGridView.Rows[i].Cells[0].Value = $"{i}";
@@ -46,16 +43,10 @@ namespace Graph
             {
                 resGridView.Rows[i].Cells[currentIndex].Style.BackColor = Color.LightBlue;
                 if (i > 1 && D[i - 1, currentIndex - 1] != D[i - 2, currentIndex - 1])
-                {
-                    currentIndex = W[i-1];
-                }
+                    currentIndex = W[i - 1];
                 if (i == 1)
-                {
                     currentIndex = W[0];
-                }
             }
-
-
         }
     }
 }
