@@ -39,7 +39,7 @@ namespace Graph
             {
                 resGridView.Rows[i].Cells[0].Value = $"{i}";
                 for (int j = 1; j < D.GetLength(1) + 1; j++)
-                    resGridView.Rows[i].Cells[j].Value = D[i - 1, j - 1] == int.MaxValue ? "∞" : D[i - 1, j - 1];
+                    resGridView.Rows[i].Cells[j].Value = D[i - 1, j - 1] == int.MaxValue || D[i - 1, j - 1] == int.MinValue ? "∞" : D[i - 1, j - 1];
             }
             int currentIndex = graph.MainDest;
             for (int i = D.GetLength(0); i >= 0; i--)

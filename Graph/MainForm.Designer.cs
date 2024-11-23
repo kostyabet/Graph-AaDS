@@ -77,6 +77,7 @@
             searchLongestWayButton.TabIndex = 3;
             searchLongestWayButton.Text = "Поиск самого длинного пути";
             searchLongestWayButton.UseVisualStyleBackColor = true;
+            searchLongestWayButton.Click += searchLongestWayButton_Click;
             // 
             // searchAllWaysButton
             // 

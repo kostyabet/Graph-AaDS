@@ -26,7 +26,16 @@ namespace Graph
         {
             int[,] D;
             int[] W;
-            (D, W)= graph.DijkstraAlgo(graph.MainSrc, graph.MainDest);
+            (D, W) = graph.DijkstraAlgoShort(graph.MainSrc, graph.MainDest);
+            DijkstraForm dijkstraForm = new DijkstraForm(D, W, graph);
+            dijkstraForm.ShowDialog();
+        }
+
+        private void searchLongestWayButton_Click(object sender, EventArgs e)
+        {
+            int[,] D;
+            int[] W;
+            (D, W) = graph.DijkstraAlgoLong(graph.MainSrc, graph.MainDest);
             DijkstraForm dijkstraForm = new DijkstraForm(D, W, graph);
             dijkstraForm.ShowDialog();
         }

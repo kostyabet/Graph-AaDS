@@ -288,7 +288,7 @@
         }
 
         // main alghoritms
-        public (int[,], int[]) DijkstraAlgo(T source, T destanation)
+        public (int[,], int[]) DijkstraAlgoShort(T source, T destanation)
         {
             List<int> W = new List<int>();
             HashSet<T> viseted = new HashSet<T>();
@@ -343,6 +343,65 @@
                     }
                 }
                 w = values[minIndex].name;
+                i++;
+            }
+            return (D, W.ToArray());
+        }
+        public (int[,], int[]) DijkstraAlgoLong(T source, T destanation)
+        {
+            List<int> W = new List<int>();
+            HashSet<T> viseted = new HashSet<T>();
+            T w = source; // start symbol
+            int[,] D = new int[values.Count, values.Count]; // lengths
+            for (int k = 0; k < values.Count; k++)
+            {
+                for (int j = 0; j < values.Count; j++)
+                {
+                    D[k, j] = int.MinValue;
+                }
+            }
+
+            int i = 0;
+            while (viseted.Count < values.Count)
+            {
+                Node<T> CurrentObject = getItem(w);
+                int currentIndex = Convert.ToInt32(CurrentObject?.name?.ToString()) - 1;
+                int prevValue = i != 0
+                    ? D[i - 1, currentIndex] == int.MinValue
+                        ? 0
+                        : D[i - 1, currentIndex]
+                    : 0;
+                for (int j = 0; j < values.Count; j++)
+                {
+                    if (viseted.Contains(values[j].name))
+                    {
+                        D[i, j] = D[i - 1, j];
+                        continue;
+                    }
+                    Edge<T> currentEdge = GetEdge(CurrentObject, values[j]);
+                    if (currentEdge != null)
+                        D[i, j] = i != 0
+                            ? Math.Max(
+                                prevValue + currentEdge.weight,
+                                D[i - 1, j])
+                            : currentEdge.weight;
+                    else
+                        D[i, j] = i != 0
+                            ? D[i - 1, j]
+                            : int.MinValue;
+                }
+                viseted.Add(w);
+                W.Add(Convert.ToInt32(getItem(w).name));
+                int maxVal = D[i, 0], maxIndex = 0;
+                for (int j = 0; j < values.Count; j++)
+                {
+                    if (D[i, j] > maxVal && !viseted.Contains(values[j].name))
+                    {
+                        maxVal = D[i, j];
+                        maxIndex = j;
+                    }
+                }
+                w = values[maxIndex].name;
                 i++;
             }
             return (D, W.ToArray());
