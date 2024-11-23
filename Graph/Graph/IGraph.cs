@@ -14,6 +14,6 @@
         public bool SetDest(T dest);
         public bool SetSrc(T src);
         public void DrawGraph(Graphics g, int width, int height);
-        public int[,] DijkstraAlgo(T source, T destanation);
+        public (int[,], int[]) DijkstraAlgo(T source, T destanation);
     }
 }

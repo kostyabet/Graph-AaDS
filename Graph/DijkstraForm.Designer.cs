@@ -28,16 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             resGridView = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)resGridView).BeginInit();
             SuspendLayout();
             // 
             // resGridView
             // 
+            resGridView.AllowUserToAddRows = false;
+            resGridView.AllowUserToDeleteRows = false;
+            resGridView.AllowUserToResizeColumns = false;
+            resGridView.AllowUserToResizeRows = false;
             resGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resGridView.ColumnHeadersVisible = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            resGridView.DefaultCellStyle = dataGridViewCellStyle1;
             resGridView.Location = new Point(0, 0);
             resGridView.Margin = new Padding(0);
             resGridView.Name = "resGridView";
+            resGridView.ReadOnly = true;
+            resGridView.RowHeadersVisible = false;
             resGridView.Size = new Size(799, 449);
             resGridView.TabIndex = 0;
             // 

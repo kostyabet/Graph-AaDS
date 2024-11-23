@@ -288,8 +288,9 @@
         }
 
         // main alghoritms
-        public int[,] DijkstraAlgo(T source, T destanation)
+        public (int[,], int[]) DijkstraAlgo(T source, T destanation)
         {
+            List<int> W = new List<int>();
             HashSet<T> viseted = new HashSet<T>();
             T w = source; // start symbol
             int[,] D = new int[values.Count, values.Count]; // lengths
@@ -320,10 +321,10 @@
                     }
                     Edge<T> currentEdge = GetEdge(CurrentObject, values[j]);
                     if (currentEdge != null)
-                        D[i, j] = i != 0 
+                        D[i, j] = i != 0
                             ? Math.Min(
-                                prevValue + currentEdge.weight, 
-                                D[i - 1, j]) 
+                                prevValue + currentEdge.weight,
+                                D[i - 1, j])
                             : currentEdge.weight;
                     else
                         D[i, j] = i != 0
@@ -331,6 +332,7 @@
                             : int.MaxValue;
                 }
                 viseted.Add(w);
+                W.Add(Convert.ToInt32(getItem(w).name));
                 int minVal = D[i,0], minIndex = 0;
                 for (int j = 0; j < values.Count; j++)
                 {
@@ -343,7 +345,7 @@
                 w = values[minIndex].name;
                 i++;
             }
-            return D;
+            return (D, W.ToArray());
         }
     }
 }
