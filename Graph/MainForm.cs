@@ -24,28 +24,45 @@ namespace Graph
 
         private void searchShortWayButton_Click(object sender, EventArgs e)
         {
-            int[,] D;
-            int[] W;
-            (D, W) = graph.DijkstraAlgoShort(graph.MainSrc);
-            DijkstraForm dijkstraForm = new DijkstraForm(D, W, graph);
-            dijkstraForm.ShowDialog();
+            if (!graph.Empty())
+            {
+                int[,] D;
+                int[] W;
+                (D, W) = graph.DijkstraAlgoShort(graph.MainSrc);
+                DijkstraForm dijkstraForm = new DijkstraForm(D, W, graph);
+                dijkstraForm.ShowDialog();
+            }
         }
 
         private void searchLongestWayButton_Click(object sender, EventArgs e)
         {
-            int[,] D;
-            int[] W;
-            (D, W) = graph.DijkstraAlgoLong(graph.MainSrc);
-            DijkstraForm dijkstraForm = new DijkstraForm(D, W, graph);
-            dijkstraForm.ShowDialog();
+            if (!graph.Empty())
+            {
+                int[,] D;
+                int[] W;
+                (D, W) = graph.DijkstraAlgoLong(graph.MainSrc);
+                DijkstraForm dijkstraForm = new DijkstraForm(D, W, graph);
+                dijkstraForm.ShowDialog();
+            }
         }
 
         private void searchAllWaysButton_Click(object sender, EventArgs e)
         {
-            int[,] Ds;
-            Ds = graph.shortestPathsMatrix();
-            AllWaysForm allWaysForm = new AllWaysForm(Ds);
-            allWaysForm.ShowDialog();
+            //int[,] Ds;
+            //Ds = graph.shortestPathsMatrix();
+            //AllWaysForm allWaysForm = new AllWaysForm(Ds);
+            //allWaysForm.ShowDialog();
+        }
+
+        private void searchCenterButton_Click(object sender, EventArgs e)
+        {
+            if (!graph.Empty())
+            {
+                int[,] Ds;
+                Ds = graph.shortestPathsMatrix();
+                AllWaysForm allWaysForm = new AllWaysForm(Ds);
+                allWaysForm.ShowDialog();
+            }
         }
     }
 }

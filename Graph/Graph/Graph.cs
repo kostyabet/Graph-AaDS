@@ -165,6 +165,10 @@ namespace Graph
         {
             return values.ToArray().ToString() ?? "";
         }
+        public bool Empty()
+        {
+            return values.Count == 0;
+        }
 
         // DRAW PART
         const int BASE_RADIUS = 30;
@@ -419,7 +423,7 @@ namespace Graph
                 (D, W) = DijkstraAlgoShort(values[i].name);
                 for (int j = 0; j < values.Count; j++)
                 {
-                    Ds[i, j] = D[D.GetLength(0)-1, j] == int.MaxValue ? 0 : D[D.GetLength(0) - 1, j];
+                    Ds[i, j] = D[D.GetLength(0)-1, j] == int.MaxValue && i == j ? 0 : D[D.GetLength(0) - 1, j];
                 }
             }
             return Ds;

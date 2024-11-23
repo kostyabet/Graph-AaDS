@@ -10,6 +10,7 @@
         public bool IsEdgeExist(T dest, T src);
         public bool RemoveEdge(T dest, T src);
         public string ToString();
+        public bool Empty();
         public bool Clear();
         public bool SetDest(T dest);
         public bool SetSrc(T src);

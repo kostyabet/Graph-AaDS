@@ -68,6 +68,7 @@
             Name = "DijkstraForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Алгоритм Дейкстра";
+            Load += DijkstraForm_Load;
             ((System.ComponentModel.ISupportInitialize)resGridView).EndInit();
             ResumeLayout(false);
         }

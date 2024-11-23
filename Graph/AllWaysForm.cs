@@ -55,14 +55,25 @@ namespace Graph
                 }
             }
             dataGridView.Rows[Ds.GetLength(1) + 1].Cells[0].Value = "max";
+            int[] maxs = new int[Ds.GetLength(0)];
             for (int i = 1; i < Ds.GetLength(1) + 1; i++)
             {
                 int max = Ds[0, i - 1];
                 for (int j = 0; j < Ds.GetLength(1) - 1; j++)
                     if (Ds[j, i - 1] > max)
                         max = Ds[j, i - 1];
+                maxs[i-1] = max;
                 dataGridView.Rows[Ds.GetLength(1) + 1].Cells[i].Value = max == int.MaxValue ? "∞" : max;
             }
+            int minIndex = 0;
+            for (int i = 0; i < maxs.Length; i++)
+            {
+                if (maxs[minIndex] > maxs[i])
+                {
+                    minIndex = i;
+                }
+            }
+            dataGridView.Rows[Ds.GetLength(1) + 1].Cells[minIndex + 1].Style.BackColor = Color.LightBlue;
         }
     }
 }

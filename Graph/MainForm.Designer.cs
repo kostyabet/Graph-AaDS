@@ -99,6 +99,7 @@
             searchCenterButton.TabIndex = 5;
             searchCenterButton.Text = "Поиск центра орграфа";
             searchCenterButton.UseVisualStyleBackColor = true;
+            searchCenterButton.Click += searchCenterButton_Click;
             // 
             // logGroupBox
             // 
