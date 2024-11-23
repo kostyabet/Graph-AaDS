@@ -1,11 +1,4 @@
-﻿using System.CodeDom;
-using System.Collections;
-using System.Diagnostics.Metrics;
-using System.Windows.Forms.VisualStyles;
-using System.Xml.Linq;
-using static System.Windows.Forms.AxHost;
-
-namespace Graph
+﻿namespace Graph
 {
     public class Graph<T> : IGraph<T>
     {
@@ -295,7 +288,7 @@ namespace Graph
         }
 
         // main alghoritms
-        public int DijkstraAlgo(T source, T destanation)
+        public int[,] DijkstraAlgo(T source, T destanation)
         {
             HashSet<T> viseted = new HashSet<T>();
             T w = source; // start symbol
@@ -350,7 +343,7 @@ namespace Graph
                 w = values[minIndex].name;
                 i++;
             }
-            return 0;
+            return D;
         }
     }
 }

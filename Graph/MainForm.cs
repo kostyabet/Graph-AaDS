@@ -24,7 +24,9 @@ namespace Graph
 
         private void searchShortWayButton_Click(object sender, EventArgs e)
         {
-            graph.DijkstraAlgo(graph.MainSrc, graph.MainDest);
+            int[,] D = graph.DijkstraAlgo(graph.MainSrc, graph.MainDest);
+            DijkstraForm dijkstraForm = new DijkstraForm(D);
+            dijkstraForm.ShowDialog();
         }
     }
 }
