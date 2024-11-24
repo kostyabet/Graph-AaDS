@@ -1,4 +1,5 @@
 ﻿using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
@@ -432,6 +433,30 @@ namespace Graph
                             if (Ds[k, j] != NO_EDGE && Ds[i, j] > Ds[i, k] + Ds[k, j])
                                 Ds[i, j] = Ds[i, k] + Ds[k, j];
             return Ds;
+        }
+        public List<List<int>> FindAllPaths(T src, T dest)
+        {
+            List<List<int>> paths = new List<List<int>>();
+            List<int> currentPath = new List<int>();
+            HashSet<int> visited = new HashSet<int>();
+            int start = Convert.ToInt32(src) - 1;
+            int end = Convert.ToInt32(dest) - 1;
+            FindAllPathsUtil(start, end, visited, currentPath, paths);
+            return paths;
+        }
+
+        private void FindAllPathsUtil(int current, int end, HashSet<int> visited, List<int> currentPath, List<List<int>> paths)
+        {
+            visited.Add(current);
+            currentPath.Add(current);
+            if (current == end)
+                paths.Add(new List<int>(currentPath));
+            else
+                foreach (var edge in values[current].edges)
+                    if (!visited.Contains(Convert.ToInt32(edge.Dest.name) - 1))
+                        FindAllPathsUtil(Convert.ToInt32(edge.Dest.name) - 1, end, visited, currentPath, paths);
+            currentPath.RemoveAt(currentPath.Count - 1);
+            visited.Remove(current);
         }
     }
 }

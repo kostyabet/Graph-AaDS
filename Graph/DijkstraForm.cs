@@ -48,10 +48,5 @@
                     currentIndex = W[0];
             }
         }
-
-        private void DijkstraForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

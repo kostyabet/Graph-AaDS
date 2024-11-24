@@ -48,10 +48,13 @@ namespace Graph
 
         private void searchAllWaysButton_Click(object sender, EventArgs e)
         {
-            //int[,] Ds;
-            //Ds = graph.shortestPathsMatrix();
-            //AllWaysForm allWaysForm = new AllWaysForm(Ds);
-            //allWaysForm.ShowDialog();
+            if (!graph.Empty())
+            {
+                List<List<int>> allPaths;
+                allPaths = graph.FindAllPaths(graph.MainSrc, graph.MainDest);
+                //AllWaysForm allWaysForm = new AllWaysForm(Ds);
+                //allWaysForm.ShowDialog();
+            }
         }
 
         private void searchCenterButton_Click(object sender, EventArgs e)
