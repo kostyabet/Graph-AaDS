@@ -17,6 +17,6 @@
         public void DrawGraph(Graphics g, int width, int height);
         public (int[,], int[]) DijkstraAlgoShort(T source);
         public (int[,], int[]) DijkstraAlgoLong(T source);
-        public int[,] shortestPathsMatrix();
+        public int[,] FloydAlgorithm();
     }
 }

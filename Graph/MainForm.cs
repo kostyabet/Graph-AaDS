@@ -59,7 +59,7 @@ namespace Graph
             if (!graph.Empty())
             {
                 int[,] Ds;
-                Ds = graph.shortestPathsMatrix();
+                Ds = graph.FloydAlgorithm();
                 AllWaysForm allWaysForm = new AllWaysForm(Ds);
                 allWaysForm.ShowDialog();
             }

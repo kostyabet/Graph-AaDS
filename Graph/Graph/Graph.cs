@@ -1,5 +1,6 @@
 ﻿using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Graph
 {
@@ -413,19 +414,23 @@ namespace Graph
             }
             return (D, W.ToArray());
         }
-        public int[,] shortestPathsMatrix()
+        public int[,] FloydAlgorithm()
         {
-            int[,] Ds = new int[values.Count, values.Count];
-            for (int i = 0; i < values.Count; i++)
-            {
-                int[,] D;
-                int[] W;
-                (D, W) = DijkstraAlgoShort(values[i].name);
-                for (int j = 0; j < values.Count; j++)
-                {
-                    Ds[i, j] = D[D.GetLength(0)-1, j] == int.MaxValue && i == j ? 0 : D[D.GetLength(0) - 1, j];
-                }
-            }
+            const int NO_EDGE = int.MaxValue;
+            int n = values.Count;
+            int[,] Ds = new int[n, n];
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    Ds[i, j] = i == j ? 0 : NO_EDGE;
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < values[i].edges.Count; j++)
+                    Ds[i, Convert.ToInt32(values[i].edges[j].Dest.name) - 1] = values[i].edges[j].weight;
+            for (int k = 0; k < n; k++)
+                for (int i = 0; i < n; i++)
+                    if (Ds[i, k] != NO_EDGE)
+                        for (int j = 0; j < n; j++)
+                            if (Ds[k, j] != NO_EDGE && Ds[i, j] > Ds[i, k] + Ds[k, j])
+                                Ds[i, j] = Ds[i, k] + Ds[k, j];
             return Ds;
         }
     }
