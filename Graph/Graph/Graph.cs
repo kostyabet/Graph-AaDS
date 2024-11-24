@@ -458,5 +458,20 @@ namespace Graph
             currentPath.RemoveAt(currentPath.Count - 1);
             visited.Remove(current);
         }
+        public void SortPaths(List<List<int>> paths)
+        {
+            for (int i = 0; i < paths.Count; i++)
+            {
+                for (int j = i + 1; j < paths.Count; j++)
+                {
+                    if (paths[i].Count > paths[j].Count)
+                    {
+                        var temp = paths[i];
+                        paths[i] = paths[j];
+                        paths[j] = temp;
+                    }
+                }
+            }
+        }
     }
 }

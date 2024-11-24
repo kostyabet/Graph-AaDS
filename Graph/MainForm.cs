@@ -52,8 +52,9 @@ namespace Graph
             {
                 List<List<int>> allPaths;
                 allPaths = graph.FindAllPaths(graph.MainSrc, graph.MainDest);
-                //AllWaysForm allWaysForm = new AllWaysForm(Ds);
-                //allWaysForm.ShowDialog();
+                graph.SortPaths(allPaths);
+                AllWaysForm allWaysForm = new AllWaysForm(allPaths);
+                allWaysForm.ShowDialog();
             }
         }
 
@@ -63,7 +64,7 @@ namespace Graph
             {
                 int[,] Ds;
                 Ds = graph.FloydAlgorithm();
-                AllWaysForm allWaysForm = new AllWaysForm(Ds);
+                SearchCenterForm allWaysForm = new SearchCenterForm(Ds);
                 allWaysForm.ShowDialog();
             }
         }

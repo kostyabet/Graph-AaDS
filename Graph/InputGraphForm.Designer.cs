@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputGraphForm));
             createGraphButton = new Button();
             nodesLabel = new Label();
             nodesTextBox = new TextBox();
@@ -151,6 +152,7 @@
             Controls.Add(nodesTextBox);
             Controls.Add(nodesLabel);
             Controls.Add(createGraphButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "InputGraphForm";

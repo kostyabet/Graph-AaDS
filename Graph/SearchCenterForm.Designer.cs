@@ -1,6 +1,6 @@
 ﻿namespace Graph
 {
-    partial class DijkstraForm
+    partial class SearchCenterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DijkstraForm));
-            resGridView = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)resGridView).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchCenterForm));
+            dataGridView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
-            // resGridView
+            // dataGridView
             // 
-            resGridView.AllowUserToAddRows = false;
-            resGridView.AllowUserToDeleteRows = false;
-            resGridView.AllowUserToResizeColumns = false;
-            resGridView.AllowUserToResizeRows = false;
-            resGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resGridView.ColumnHeadersVisible = false;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToResizeColumns = false;
+            dataGridView.AllowUserToResizeRows = false;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.ColumnHeadersVisible = false;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
@@ -49,33 +49,33 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            resGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            resGridView.Location = new Point(0, 0);
-            resGridView.Margin = new Padding(0);
-            resGridView.Name = "resGridView";
-            resGridView.ReadOnly = true;
-            resGridView.RowHeadersVisible = false;
-            resGridView.Size = new Size(799, 449);
-            resGridView.TabIndex = 0;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView.Location = new Point(0, 0);
+            dataGridView.Margin = new Padding(0);
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.Size = new Size(800, 449);
+            dataGridView.TabIndex = 0;
             // 
-            // DijkstraForm
+            // SearchCenterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(resGridView);
+            Controls.Add(dataGridView);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "DijkstraForm";
+            Name = "SearchCenterForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Алгоритм Дейкстра";
-            ((System.ComponentModel.ISupportInitialize)resGridView).EndInit();
+            Text = "Матрица кратчайших путей";
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView resGridView;
+        private DataGridView dataGridView;
     }
 }

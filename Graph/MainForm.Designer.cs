@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             inputGraphButton = new Button();
             graphPanel = new Panel();
             searchShortWayButton = new Button();
@@ -122,6 +123,7 @@
             Controls.Add(searchShortWayButton);
             Controls.Add(graphPanel);
             Controls.Add(inputGraphButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MaximumSize = new Size(1000, 600);
             MinimumSize = new Size(1000, 600);

@@ -18,7 +18,7 @@
         {
             // grid settings
             const int rowWidth = 101;
-            const int colWidth = 30;
+            const int colWidth = 31;
             resGridView.ColumnCount = D.GetLength(1) + 1;
             resGridView.RowCount = D.GetLength(0) + 1;
             resGridView.Width = rowWidth * resGridView.ColumnCount;

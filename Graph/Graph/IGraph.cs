@@ -19,5 +19,6 @@
         public (int[,], int[]) DijkstraAlgoLong(T source);
         public int[,] FloydAlgorithm();
         public List<List<int>> FindAllPaths(T src, T dest);
+        public void SortPaths(List<List<int>> paths);
     }
 }
